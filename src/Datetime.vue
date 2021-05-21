@@ -1,16 +1,18 @@
 <template>
   <div class="vdatetime">
     <slot name="before"></slot>
-    <input class="vdatetime-input"
-           :class="inputClass"
-           :style="inputStyle"
-           :id="inputId"
-           type="text"
-           :value="inputValue"
-           v-bind="$attrs"
-           v-on="$listeners"
-           @click="open"
-           @focus="open">
+    <slot name="input">
+      <input class="vdatetime-input"
+            :class="inputClass"
+            :style="inputStyle"
+            :id="inputId"
+            type="text"
+            :value="inputValue"
+            v-bind="$attrs"
+            v-on="$listeners"
+            @click="open"
+            @focus="open">
+    </slot>
     <input v-if="hiddenName" type="hidden" :name="hiddenName" :value="value" @input="setValue">
     <slot name="after"></slot>
     <transition-group name="vdatetime-fade" tag="div">
